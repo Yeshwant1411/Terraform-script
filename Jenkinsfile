@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'Yeshwant1411-patch-1', url: 'https://github.com/Yeshwant1411/Terraform-Script.git'
+                git branch: 'main', url: 'https://github.com/Yeshwant1411/Terraform-Script.git'
             }
         }
         stage('Terraform init') {
