@@ -105,7 +105,7 @@ resource "aws_route_table_association" "private_subnet_association" {
 
 provider "aws"{
   region ="ap-south-1"
-  profile = "Yeshwant"
+  profile = "default"
    }
 
 
@@ -200,15 +200,13 @@ resource "aws_lb_listener" "alb_listener" {
 resource "aws_launch_template" "ec2_launch_template" {
   name = "yt-web-server"
 
-  image_id      = "ami-0aebec83a182ea7ea" //Copy the ami id from aws console
+  image_id      = "ami-0dee22c13ea7a9a67" //Copy the ami id from aws console
   instance_type = "t2.micro"
 
   network_interfaces {
     associate_public_ip_address = false
     security_groups             = [aws_security_group.ec2_sg.id]
   }
-
-  user_data = filebase64("userdata.sh")
 
   tag_specifications {
     resource_type = "instance"
