@@ -14,3 +14,13 @@ resource "aws_cloudwatch_metric_alarm" "cpu_low_alarm" {
 
   alarm_actions = [aws_autoscaling_policy.scale_down.arn]
 }
+
+resource "aws_autoscaling_policy" "scale_down" {
+  name                   = "scale-down-policy"
+  scaling_adjustment      = -1  # Number of instances to remove
+  adjustment_type         = "ChangeInCapacity"
+  cooldown                = 300  # 5 minutes cooldown
+  autoscaling_group_name   = aws_autoscaling_group.ec2_asg.name  # Correct argument
+
+  policy_type             = "SimpleScaling"
+}
