@@ -105,7 +105,7 @@ resource "aws_route_table_association" "private_subnet_association" {
 
 provider "aws"{
   region ="ap-south-1"
-  profile = "default"
+  profile = "Yeshwant"
    }
 
 
