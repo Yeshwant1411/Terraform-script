@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     environment {
+        AWS_ACCESS_KEY_ID = credentials('aws-access-key-ID')
+        AWS_SECRET_ACCESS_KEY = credentials('aws-access-key')
         AWS_REGION = 'ap-south-1'
         TF_VAR_profile = 'default'  // Use the AWS CLI profile (ensure it's configured in Jenkins)
     }
@@ -9,8 +11,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                // Checkout the Terraform code from the repository
-                checkout scm
+                git branch: 'main', url : 'https://github.com/Yeshwant1411/Terraform-script.git'
             }
         }
 
